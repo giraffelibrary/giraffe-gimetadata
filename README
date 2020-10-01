@@ -1,0 +1,60 @@
+This repository provides the GObject Introspection (GI) metadata files used by
+the Giraffe code generator (https://github.com/giraffelibrary/giraffe/).  Both
+GIR and TYPELIB files are included.  The files are organized in a directory
+hierarchy where each metadata file is indexed by package version, GI version and
+platform.  The directory has the following structure:
+
+    └── <namespace>-<version>
+        └── <pkg-version>
+            └── <gi-version>
+                └── <platform>
+                    ├── gir-1.0
+                    │   └── <Namespace>-<Version>.gir
+                    └── girepository-1.0
+                        └── <Namespace>-<Version>.typelib
+
+or, if <pkg-version> is empty, the following structure:
+
+    └── <namespace>-<version>
+        └── <gi-version>
+            └── <platform>
+                ├── gir-1.0
+                │   └── <Namespace>-<Version>.gir
+                └── girepository-1.0
+                    └── <Namespace>-<Version>.typelib
+
+where
+
+  - <pkg-version> is the version of the package that the metadata file
+    was generated from;
+
+  - <gi-version> is the version of GObject Introspection (GI) that was
+    used to generate (or provide) the metadata file.
+
+For example, we may have the following hierarchy for Vte 2.91:
+
+    └── vte-2.91
+        ├── 0.39.1
+        │   └── 1.42.0
+        │       └── x86_64
+        │           ├── gir-1.0
+        │           │   └── Vte-2.91.gir
+        │           └── girepository-1.0
+        │               └── Vte-2.91.typelib
+        └── 0.46.3
+            └── 1.50.0
+                └── x86_64
+                    ├── gir-1.0
+                    │   └── Vte-2.91.gir
+                    └── girepository-1.0
+                        └── Vte-2.91.typelib
+
+and the following hierarchy for xlib, which has no version:
+
+    └── xlib-2.0
+        └── 1.30.0
+            └── x86_64
+                ├── gir-1.0
+                │   └── xlib-2.0.gir
+                └── girepository-1.0
+                    └── xlib-2.0.typelib
